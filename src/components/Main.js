@@ -3,40 +3,34 @@ import pen from "../images/profile__edit-avatar.svg";
 import api from "../utils/Api";
 import Card from "./Card";
 
-function Main(props) {
-  const [userName, setUserName] = useState(null);
-  const [userDescription, setUserDescription] = useState(null);
-  const [userAvatar, setUserAvatar] = useState(null);
-  const [cards, getInitialCards] = useState([]);
+function Main({ onCardClick, onEditAvatar, onEditProfile, onAddPlace }) {
+  const [userName, setUserName] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
+  const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
-    api
-      .getRealUserInfo()
-      .then((data) => {
-        return (
-          setUserName(data.name),
-          setUserDescription(data.about),
-          setUserAvatar(data.avatar)
-        );
+  useEffect(() => {
+    Promise.all([api.getRealUserInfo(), api.getInitialCards()])
+      .then(([userInfo, initialCards]) => {
+        setUserName(userInfo.name);
+        setUserDescription(userInfo.about);
+        setUserAvatar(userInfo.avatar);
+        setCards(initialCards);
       })
-      .catch((error) => console.log(`Ошибка: ${error}`));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
-  React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((data) => {
-        getInitialCards(
-          data.map((card) => ({
-            name: card.name,
-            link: card.link,
-            likes: card.likes,
-            cardId: card._id,
-          }))
-        );
-      })
-      .catch((error) => console.log(`Ошибка: ${error}`));
-  }, []);
+  const cardElements = cards.map((card) => (
+    <Card
+      key={card.cardId}
+      link={card.link}
+      name={card.name}
+      likes={card.likes}
+      onCardClick={onCardClick}
+    />
+  ));
 
   return (
     <main className="content">
@@ -51,7 +45,7 @@ function Main(props) {
             <button className="profile__edit-avatar" type="button">
               <img
                 onClick={() => {
-                  props.onEditAvatar(true);
+                  onEditAvatar(true);
                 }}
                 className="profile__edit-pen"
                 src={pen}
@@ -63,7 +57,7 @@ function Main(props) {
             <h1 className="profile__title">{userName}</h1>
             <button
               onClick={() => {
-                props.onEditProfile(true);
+                onEditProfile(true);
               }}
               className="profile__edit-button"
               id="myBtn"
@@ -74,24 +68,14 @@ function Main(props) {
         </div>
         <button
           onClick={() => {
-            props.onAddPlace(true);
+            onAddPlace(true);
           }}
           className="profile__add-button"
           type="button"
         />
       </section>
-      <template className="template" />
-      <section className="elements">
-        {cards.map((card) => (
-          <Card
-            key={card.cardId}
-            link={card.link}
-            name={card.name}
-            likes={card.likes}
-            onCardClick={props.onCardClick}
-          />
-        ))}
-      </section>
+
+      <section className="elements">{cardElements}</section>
     </main>
   );
 }

@@ -12,6 +12,18 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
+  const handleEditProfileClick = () => {
+    setIsEditProfilePopupOpen(true)
+}
+
+const handleAddPlaceClick = () => {
+  setIsAddPlacePopupOpen(true)
+}
+
+const handleEditAvatarClick = () => {
+  setIsEditAvatarPopupOpen(true)
+}
+
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
@@ -24,9 +36,9 @@ function App() {
       <div className="page">
         <Header />
         <Main
-          onEditProfile={setIsEditProfilePopupOpen}
-          onAddPlace={setIsAddPlacePopupOpen}
-          onEditAvatar={setIsEditAvatarPopupOpen}
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+          onEditAvatar={handleEditAvatarClick}
           onCardClick={setSelectedCard}
         />
 
@@ -123,7 +135,7 @@ function App() {
           name="deleteCards"
           title="Вы уверены?"
           button="Да"
-        ></PopupWithForm>
+        />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>

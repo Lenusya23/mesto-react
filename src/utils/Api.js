@@ -6,7 +6,7 @@ class Api {
   }
 
   // Формирую запрос на сервер, если прошел не удачно, возвращаем ошибку!
-  _handleSendingRequest(res) {
+  _checkResponse(res) {
     if (res.ok) {
       return Promise.resolve(res.json());
     }
@@ -20,7 +20,7 @@ class Api {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод загрузки карточек с сервера
@@ -28,7 +28,7 @@ class Api {
     const response = await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод редактирование профиля
@@ -41,7 +41,7 @@ class Api {
         about: data.about,
       }),
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод добавления новой карточки с сервера
@@ -51,7 +51,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify(data),
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод постановки лайка карточки
@@ -60,7 +60,7 @@ class Api {
       method: "PUT",
       headers: this._headers,
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод удаления карточки
@@ -69,7 +69,7 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод постановки и снятия лайка с карточки
@@ -78,7 +78,7 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 
   // Метод обновления аватара пользователя
@@ -90,7 +90,7 @@ class Api {
         avatar: data.avatar,
       }),
     });
-    return this._handleSendingRequest(response);
+    return this._checkResponse(response);
   }
 }
 const api = new Api({
