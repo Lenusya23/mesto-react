@@ -7,22 +7,21 @@ import ImagePopup from "./ImagePopup";
 
 function App() {
   const [selectedCard, setSelectedCard] = useState({});
-
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
   const handleEditProfileClick = () => {
-    setIsEditProfilePopupOpen(true)
-}
+    setIsEditProfilePopupOpen(true);
+  };
 
-const handleAddPlaceClick = () => {
-  setIsAddPlacePopupOpen(true)
-}
+  const handleAddPlaceClick = () => {
+    setIsAddPlacePopupOpen(true);
+  };
 
-const handleEditAvatarClick = () => {
-  setIsEditAvatarPopupOpen(true)
-}
+  const handleEditAvatarClick = () => {
+    setIsEditAvatarPopupOpen(true);
+  };
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
@@ -131,11 +130,7 @@ const handleEditAvatarClick = () => {
           </label>
         </PopupWithForm>
 
-        <PopupWithForm
-          name="deleteCards"
-          title="Вы уверены?"
-          button="Да"
-        />
+        <PopupWithForm name="deleteCards" title="Вы уверены?" button="Да" />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
