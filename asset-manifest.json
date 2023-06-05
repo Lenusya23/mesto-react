@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/mesto-react/static/css/main.9034c03b.css",
+    "main.js": "/mesto-react/static/js/main.a4c8a04c.js",
+    "static/js/787.5530211c.chunk.js": "/mesto-react/static/js/787.5530211c.chunk.js",
+    "static/media/Inter-Medium.woff?v=3.19": "/mesto-react/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff?v=3.19": "/mesto-react/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/mesto-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2?v=3.19": "/mesto-react/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2?v=3.19": "/mesto-react/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/mesto-react/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "index.html": "/mesto-react/index.html",
+    "static/media/Trashbin.svg": "/mesto-react/static/media/Trashbin.ce3b64935accf9b8212e.svg",
+    "static/media/Edit-ButtonMobile.svg": "/mesto-react/static/media/Edit-ButtonMobile.f66e917d7fb212913c9e.svg",
+    "static/media/Add-ButtonMobile.svg": "/mesto-react/static/media/Add-ButtonMobile.8e041299935e2fbbe15e.svg",
+    "static/media/Add-Button.svg": "/mesto-react/static/media/Add-Button.13997fdf54b4cb323817.svg",
+    "static/media/Edit-Button.svg": "/mesto-react/static/media/Edit-Button.af236f6cf67005f1d7aa.svg",
+    "static/media/profile__edit-avatar.svg": "/mesto-react/static/media/profile__edit-avatar.ae1a976ddb506239e9f06655014e44a3.svg",
+    "static/media/Close-IconMobile.svg": "/mesto-react/static/media/Close-IconMobile.622e8cdafa2222aa7c54.svg",
+    "main.9034c03b.css.map": "/mesto-react/static/css/main.9034c03b.css.map",
+    "main.a4c8a04c.js.map": "/mesto-react/static/js/main.a4c8a04c.js.map",
+    "787.5530211c.chunk.js.map": "/mesto-react/static/js/787.5530211c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9034c03b.css",
+    "static/js/main.a4c8a04c.js"
+  ]
+}
