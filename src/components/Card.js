@@ -1,30 +1,59 @@
-import React from "react";
+import { useContext } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Card(props) {
-  function handleClick() {
-    props.onCardClick(props);
+function Card({
+  card,
+  onCardLike,
+  onCardDelete,
+  onCardClick,
+  onConfirmationPopup,
+}) {
+  const currentUser = useContext(CurrentUserContext);
+  const isLiked = card.likes.some((i) => i._id === currentUser._id);
+  const likeButtonClassName = `element__like-button ${
+    isLiked ? "element__like-button_active" : ""
+  }`;
+  const isOwner = card.owner._id === currentUser._id;
+
+  function handleLikeClick() {
+    onCardLike(card);
   }
+
+  function handleDeleteClick() {
+    onCardDelete(card);
+    onConfirmationPopup(true);
+  }
+
+  function handleCardClick() {
+    onCardClick(card);
+  }
+
   return (
     <div className="element">
+      {isOwner && (
+        <button
+          className="element__trash"
+          aria-label="Удалить"
+          onClick={handleDeleteClick}
+          type="button"
+        />
+      )}
       <img
         className="element__mask"
-        src={props.link}
-        alt={props.name}
-        onClick={handleClick}
+        src={card.link}
+        alt={card.name}
+        onClick={handleCardClick}
       />
-      <button
-        className="element__trash"
-        type="button"
-        aria-label="Корзина"
-      ></button>
       <div className="element__group">
-        <h2 className="element__title">{props.name}</h2>
+        <h2 className="element__title">{card.name}</h2>
         <div className="element__container-like">
           <button
-            className="element__like-button"
+            className={likeButtonClassName}
+            onClick={handleLikeClick}
+            type="button"
             aria-label="Поставить лайк"
           ></button>
-          <span className="element__count-like">{props.likes.length}</span>
+          <p className="element__count-like">{card.likes.length}</p>
         </div>
       </div>
     </div>

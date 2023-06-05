@@ -1,12 +1,19 @@
 import React from "react";
 
-function PopupWithForm(props) {
+function PopupWithForm({
+  name,
+  title,
+  buttonText,
+  children,
+  isOpen,
+  onSubmit,
+  onClose,
+  onCloseOverlay,
+}) {
   return (
     <div
-      className={`popup popup_type_${props.name} ${
-        props.isOpen ? "popup_opened" : ""
-      }`}
-      onClick={props.onClose}
+      className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}
+      onClick={onCloseOverlay}
     >
       {/* e.stopPropagation - метод, который предотвращает распространение событий на родительские элемент */}
 
@@ -14,13 +21,13 @@ function PopupWithForm(props) {
         <button
           className="popup__close"
           type="button"
-          onClick={props.onClose}
+          onClick={onClose}
         ></button>
-        <h2 className="popup__title">{props.title}</h2>
-        <form className="popup__form" name={props.name}>
-          {props.children}
+        <h2 className="popup__title">{title}</h2>
+        <form className="popup__form" name={name} onSubmit={onSubmit}>
+          {children}
           <button className="popup__save" type="submit">
-            {props.button}
+            {buttonText}
           </button>
         </form>
       </div>

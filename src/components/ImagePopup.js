@@ -1,10 +1,10 @@
 import React from "react";
 
-function ImagePopup({ card, onClose }) {
+function ImagePopup({ card, onClose, onCloseOverlay }) {
   return (
     <div
       className={`popup popup_type_image ${card.link ? "popup_opened" : ""}`}
-      onClick={onClose}
+      onClick={onCloseOverlay}
     >
       {/* e.stopPropagation - метод, который предотвращает распространение событий на родительские элемент */}
 
